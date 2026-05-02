@@ -1,4 +1,5 @@
 require('dotenv').config();
+const crypto = require('crypto');
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -568,7 +569,6 @@ app.post('/api/admin/generate-invite', authMiddleware, [
   
   try {
     const { email } = req.body;
-    const crypto = require('crypto');
     const token = crypto.randomBytes(32).toString('hex');
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
     
@@ -660,7 +660,6 @@ app.post('/api/admin/forgot-password', [
       return res.json({ success: true, message: 'If email exists, reset link sent' });
     }
     
-    const crypto = require('crypto');
     const token = crypto.randomBytes(32).toString('hex');
     const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
     
