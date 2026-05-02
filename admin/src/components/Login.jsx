@@ -98,6 +98,10 @@ function Login() {
           <Link to="/forgot-password">Forgot Password?</Link>
         </div>
 
+        <div className="signup-link">
+          <p>Don't have an account? <Link to="/signup">Create First Admin</Link></p>
+        </div>
+
         <div className="admin-note">
           <p>⚠️ Admin access only - Contact administrator for invite</p>
         </div>

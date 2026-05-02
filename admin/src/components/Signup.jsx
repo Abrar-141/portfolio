@@ -25,13 +25,15 @@ function Signup() {
     const verifyInvite = async () => {
       const token = searchParams.get('token');
       if (!token) {
-        setError('No invite token provided. Please use the invite link sent to you.');
+        // No token means first admin signup
+        setInviteValid(true);
         setVerifying(false);
         return;
       }
 
       try {
-        const response = await fetch(`http://localhost:5001/api/admin/verify-invite/${token}`);
+        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+        const response = await fetch(`${API_URL}/api/admin/verify-invite/${token}`);
         const data = await response.json();
 
         if (data.valid) {
@@ -70,7 +72,8 @@ function Signup() {
     }
 
     try {
-      const response = await fetch('http://localhost:5001/api/admin/signup', {
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+      const response = await fetch(`${API_URL}/api/admin/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -78,7 +81,7 @@ function Signup() {
           username: formData.username,
           email: formData.email,
           password: formData.password,
-          inviteToken: formData.inviteToken
+          inviteToken: formData.inviteToken || 'first-admin'
         })
       });
 
@@ -170,17 +173,19 @@ function Signup() {
           </div>
 
           <div className="form-group">
-            <label>Email (From Invite)</label>
+            <label>Email</label>
             <div className="input-wrapper">
               <Mail size={20} />
               <input
                 type="email"
                 name="email"
-                placeholder="Email from invite"
+                placeholder="Enter your email"
                 value={formData.email}
-                disabled
+                onChange={handleChange}
+                disabled={!!searchParams.get('token')}
                 autoComplete="off"
-                style={{ backgroundColor: '#f3f4f6', cursor: 'not-allowed' }}
+                style={searchParams.get('token') ? { backgroundColor: '#f3f4f6', cursor: 'not-allowed' } : {}}
+                required
               />
             </div>
           </div>

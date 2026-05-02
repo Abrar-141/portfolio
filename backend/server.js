@@ -89,22 +89,28 @@ app.post('/api/admin/signup', [
   try {
     const { fullName, username, email, password, inviteToken } = req.body;
     
-    // Verify invite token
-    const invite = await InviteToken.findOne({ token: inviteToken });
-    if (!invite) {
-      return res.status(400).json({ success: false, message: 'Invalid invite token' });
-    }
+    // Check if this is first admin (no admins exist)
+    const adminCount = await Admin.countDocuments();
+    const isFirstAdmin = adminCount === 0;
     
-    if (invite.isUsed) {
-      return res.status(400).json({ success: false, message: 'Invite token already used' });
-    }
-    
-    if (new Date() > invite.expiresAt) {
-      return res.status(400).json({ success: false, message: 'Invite token expired' });
-    }
-    
-    if (invite.email !== email) {
-      return res.status(400).json({ success: false, message: 'Email does not match invite' });
+    // Verify invite token only if not first admin
+    if (!isFirstAdmin) {
+      const invite = await InviteToken.findOne({ token: inviteToken });
+      if (!invite) {
+        return res.status(400).json({ success: false, message: 'Invalid invite token' });
+      }
+      
+      if (invite.isUsed) {
+        return res.status(400).json({ success: false, message: 'Invite token already used' });
+      }
+      
+      if (new Date() > invite.expiresAt) {
+        return res.status(400).json({ success: false, message: 'Invite token expired' });
+      }
+      
+      if (invite.email !== email) {
+        return res.status(400).json({ success: false, message: 'Email does not match invite' });
+      }
     }
     
     const existingAdmin = await Admin.findOne({ $or: [{ username }, { email }] });
@@ -119,10 +125,13 @@ app.post('/api/admin/signup', [
     const newAdmin = new Admin({ fullName, username, email, password: hashedPassword });
     await newAdmin.save();
     
-    // Mark invite as used
-    invite.isUsed = true;
-    invite.usedBy = newAdmin._id;
-    await invite.save();
+    // Mark invite as used (only if not first admin)
+    if (!isFirstAdmin) {
+      const invite = await InviteToken.findOne({ token: inviteToken });
+      invite.isUsed = true;
+      invite.usedBy = newAdmin._id;
+      await invite.save();
+    }
     
     res.json({ success: true, message: 'Admin account created successfully' });
   } catch (error) {
