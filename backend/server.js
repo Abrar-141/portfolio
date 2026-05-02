@@ -36,7 +36,7 @@ app.use(cors({
     'http://localhost:3000',
     'http://localhost:3001',
     'https://portfolio-hafiz-abrar.vercel.app',
-    'https://portfolio-admin-tan-rho.vercel.app'
+    'https://portfolio-abrar-admin.vercel.app'
   ],
   credentials: true,
   exposedHeaders: ['Content-Length', 'Content-Type']
