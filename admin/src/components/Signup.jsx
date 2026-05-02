@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail, User, UserPlus } from 'lucide-react';
+import API_URL from '../config/api';
 import '../CSS/Login.css';
 
 function Signup() {
@@ -32,7 +33,6 @@ function Signup() {
       }
 
       try {
-        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
         const response = await fetch(`${API_URL}/api/admin/verify-invite/${token}`);
         const data = await response.json();
 
@@ -72,7 +72,6 @@ function Signup() {
     }
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
       const response = await fetch(`${API_URL}/api/admin/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
