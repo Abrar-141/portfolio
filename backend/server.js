@@ -24,6 +24,9 @@ const ContactMessage = require('./models/ContactMessage');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy for Railway deployment
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 
@@ -54,7 +57,9 @@ app.use(express.static(path.join(__dirname, '../frontend/public'), {
 // Rate Limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false
 });
 app.use('/api/', limiter);
 
