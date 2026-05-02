@@ -1,0 +1,146 @@
+{
+  "admins": [
+    {
+      "id": 1,
+      "fullName": "Admin User",
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "admin123"
+    },
+    {
+      "id": 2,
+      "fullName": "Hafiz Abrar",
+      "username": "abrar",
+      "email": "abrariqbal141@gmail.com",
+      "password": "admin123"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Ali",
+      "email": "ali@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Sara",
+      "email": "sara@example.com"
+    }
+  ],
+  "projects": [],
+  "skills": [
+    {
+      "id": 1771349739231,
+      "category": "Frontend",
+      "name": "React",
+      "level": 90
+    },
+    {
+      "id": 1771352523649,
+      "category": "Frontend",
+      "name": "HTML",
+      "level": 100,
+      "expertise": "Expert"
+    },
+    {
+      "id": 1771352553072,
+      "category": "Frontend",
+      "name": "CSS",
+      "level": 50,
+      "expertise": "Good"
+    },
+    {
+      "id": 1771353666649,
+      "category": "Backend",
+      "name": "Node.js",
+      "level": 80,
+      "expertise": "Good"
+    }
+  ],
+  "homeData": {
+    "profileImage": "/1771361508510-Abrar.png.webp",
+    "heroImage": "/1771361439008-Abrar.png.webp",
+    "cvFile": "/Hafiz Abrar CV.pdf",
+    "heroTitle": "CodeArtist",
+    "heroSubtitle": "Experiences",
+    "heroDescription": "Full-Stack Developer specializing in MERN Stack & React Native. Transforming ideas into scalable, high-performance applications with modern design principles.",
+    "name": "HaFiz Abrar Iqbal",
+    "designation": "Software Eng",
+    "email": "abrariqbal141@gmail.com",
+    "github": "https://www.linkedin.com/in/hâfîz-abrâr-449956281?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    "linkedin": "https://github.com/Abrar-afk-141",
+    "projectsCount": "5+"
+  },
+  "aboutData": {
+    "profileImage": "/1771361508510-Abrar.png.webp",
+    "name": "Hafiz Abrar Iqbal",
+    "title": "Software Engineer | UI/UX Designer",
+    "bio": "I am a detail-oriented Software Engineering student at SZABIST with a passion for bridging the gap between complex backend logic and intuitive frontend design. With a Graphic Design certification from SMIT, I bring a unique perspective to web and mobile development, ensuring every project is as visually stunning as it is functionally robust.\n\nCurrently, I am focusing on my Final Year Project, AjwaHub, an e-commerce platform that showcases my expertise in React Native and full-stack development. My goal is to create digital experiences that are scalable, efficient, and user-centric.",
+    "quote": "I craft digital experiences where elegant code meets stunning design — building scalable, high-performance solutions that users love and businesses trust.",
+    "focus": [
+      {
+        "title": "Development Focus",
+        "value": "MERN Stack & React Native"
+      },
+      {
+        "title": "Design Expertise",
+        "value": "Figma, Photoshop & Illustrator"
+      },
+      {
+        "title": "Academic Strength",
+        "value": "Software Development Lifecycle"
+      }
+    ],
+    "stats": [
+      {
+        "number": "6",
+        "label": "Projects Completed"
+      },
+      {
+        "number": "1+",
+        "label": "Years Experience"
+      },
+      {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      }
+    ]
+  },
+  "education": [
+    {
+      "id": 1,
+      "institution": "SZABIST",
+      "logo": "/1771361482616-szabist.png",
+      "degree": "Bachelor of Science in Software Engineering",
+      "type": "BSSE",
+      "location": "SZABIST University, Karachi",
+      "period": "Sep 2022 – Present",
+      "description": "Currently in my final semester, focusing on Software Development Lifecycles, Programming Languages, and System Design.",
+      "tags": [
+        "SDLC",
+        "System Design",
+        "Programming"
+      ],
+      "current": true,
+      "courses": [
+        ""
+      ],
+      "startDate": "2022",
+      "endDate": "Present"
+    },
+    {
+      "id": 1771354951057,
+      "institution": "Sindh Muslim Govt. Science College",
+      "logo": "/1771361492393-SMcollege.png",
+      "startDate": "2020",
+      "endDate": "2022",
+      "location": "Karachi, Sindh, Pakistan.",
+      "description": "Completed my higher secondary education from S.M. Govt Science College, building a solid foundation in Mathematics, Physics, and Chemistry that paved the way for my Software Engineering journey.",
+      "courses": [
+        "Physices",
+        "Chemistry",
+        "Mathamethices"
+      ]
+    }
+  ]
+}
